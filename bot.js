@@ -1,3 +1,5 @@
+var irc = require("irc");
+
 var pressButton = function(button){
     console.log(button);
 };
@@ -9,8 +11,6 @@ var config = {
     server: "irc.freenode.net",
     botName: "Pokemon"
 };
-
-var irc = require("irc");
 
 var bot = new irc.Client(config.server, config.botName, {
     channels: config.channels
