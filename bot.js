@@ -1,8 +1,13 @@
-// Create the configuration
+var pressButton = function(button){
+    console.log(button);
+};
+
+var buttons = ["up", "down", "left", "right", "a", "b", "start"];
+
 var config = {
     channels: ["#ruhack"],
     server: "irc.freenode.net",
-    botName: "TPP"
+    botName: "Pokemon"
 };
 
 var irc = require("irc");
@@ -12,5 +17,8 @@ var bot = new irc.Client(config.server, config.botName, {
 });
 
 bot.addListener("message", function(from, to, text, message) {
-    console.log(text);
+    if(buttons.indexOf(text) > -1){
+        //press the button
+        pressButton(text);
+    }
 });
