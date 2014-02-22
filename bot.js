@@ -1,10 +1,21 @@
 var irc = require("irc");
+var keyboard = require('./win_keyboard');
 
-var pressButton = function(button){
-    console.log(button);
+var buttons = {
+    "up": "w",
+    "down": "s",
+    "left": "a",
+    "right": "d",
+    "a": "z",
+    "b": "x",
+    "start": "c"
 };
 
-var buttons = ["up", "down", "left", "right", "a", "b", "start"];
+var pressButton = function(button){
+    var keyCode = keyboard.getKeyCode(buttons[button]);
+    keyboard.type(keyCode);
+    console.log(button);
+};
 
 var config = {
     channels: ["#ruhack"],
@@ -22,3 +33,5 @@ bot.addListener("message", function(from, to, text, message) {
         pressButton(text);
     }
 });
+
+console.log("Fuck");
